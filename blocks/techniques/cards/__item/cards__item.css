@@ -1,7 +1,7 @@
 .cards__item {
     display: flex;
     flex-direction: column;
-    width: 240px;
+    max-width: 240px;
     text-align: center;
     margin-top: 60px;
     margin-right: 100px;

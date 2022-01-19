@@ -4,8 +4,13 @@
     font-weight: normal;
     text-decoration: none;
     color: white;
+    transition: opacity 0.8s ease-in-out;
 }
 
 .footer__column-link:last-child {
     margin-bottom: 16px;
+}
+
+.footer__column-link:hover {
+    opacity: 0.6;
 }
