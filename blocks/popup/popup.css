@@ -1,0 +1,40 @@
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 195px 425px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+@media screen and (max-width: 1200px) {
+    .popup {
+        padding: 140px 280px;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .popup {
+        padding: 135px 190px;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .popup {
+        padding: 130px 100px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .popup {
+        padding: 127px 30px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .popup {
+        padding: 123px 19px;
+    }
+}

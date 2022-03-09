@@ -1,0 +1,8 @@
+.elements {
+    max-width: calc(100% - 200px*2);
+    margin: 0 auto;
+    padding: 51px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+    list-style-type: none;
+}

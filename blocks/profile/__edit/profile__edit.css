@@ -1,0 +1,11 @@
+.profile__edit {
+    height: 24px;
+    align-self: center;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 320px) {
+    .profile__edit {
+        height: 18px;
+    }
+}

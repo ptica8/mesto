@@ -1,0 +1,9 @@
+.input {
+    margin-bottom: 48px;
+}
+
+@media screen and (max-width: 320px) {
+    .input {
+        margin-bottom: 45px;
+    }
+}
