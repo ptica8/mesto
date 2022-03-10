@@ -1,0 +1,5 @@
+.element__img {
+    object-fit: cover;
+    width: 282px;
+    border-radius: 10px 10px 0 0;
+}

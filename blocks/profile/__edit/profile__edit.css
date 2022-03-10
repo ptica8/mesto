@@ -1,6 +1,10 @@
 .profile__edit {
     height: 24px;
     align-self: center;
+}
+
+.profile__edit:hover {
+    opacity: 0.6;
     cursor: pointer;
 }
 

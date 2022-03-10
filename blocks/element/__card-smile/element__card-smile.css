@@ -1,0 +1,6 @@
+.element__card-smile {
+    object-fit: cover;
+    margin-left: auto;
+    align-self: center;
+    cursor: pointer;
+}
