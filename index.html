@@ -9,7 +9,6 @@
 <body class="page">
 	<header class="header">
 		<img src="./images/logo.png" alt="Логотип" class="header__logo">
-		<hr class="header__line">
 	</header>
 	<main class="content">
 		<section class="profile">
@@ -19,7 +18,7 @@
 				<img src="images/edit-button.svg" alt="Кнопка Редактировать" class="profile__edit">
 				<p class="profile__subtitle">Исследователь океана</p>
 			</div>
-			<button class="profile__button" type="button" aria-label="Кнопка Добавить">
+			<button class="profile__button" type="button" aria-label="Кнопка Добавить"></button>
 		</section>
 
 		<section>
@@ -76,12 +75,12 @@
 	<form class="popup">
 		<div class="popup__container">
 			<h2 class="popup__title">Редактировать профиль</h2>
-				<label class="input">
+				<div class="input">
 					<input class="input__name input__text" name="name" placeholder="Жак-Ив Кусто" type="text" value>
 					<input class="input__job input__text" name="text" placeholder="Исследователь океана" type="text" value>
-				</label>
+				</div>
 			<button class="popup__save" type="submit">Сохранить</button>
-			<button class="popup__close" type="button" aria-label="Закрыть форму">
+			<button class="popup__close" type="button" aria-label="Закрыть форму"></button>
 		</div>
 	</form>
 <script src="scripts/index.js"></script>
