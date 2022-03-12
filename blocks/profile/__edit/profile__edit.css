@@ -1,6 +1,13 @@
 .profile__edit {
+    background-image: url(../../../images/edit-button.svg);
+    background-color: transparent;
+    background-size: cover;
+    width: 24px;
     height: 24px;
     align-self: center;
+    border: none;
+    padding: 0;
+    grid-area: 1 / 2 / 2 / 2;
 }
 
 .profile__edit:hover {
@@ -11,5 +18,6 @@
 @media screen and (max-width: 320px) {
     .profile__edit {
         height: 18px;
+        width: 18px;
     }
 }

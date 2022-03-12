@@ -1,24 +1,26 @@
 .profile__info {
     color: #FFFFFF;
-    max-width: 336px;
+    align-items: center;
+    justify-content: center;
     display: grid;
+    gap: 16px;
+    max-width: 336px;
     grid-template-columns: 294px 24px;
-    gap: 16px 18px;
     margin: 22px 0 25px 30px;
 }
 
 @media screen and (max-width: 450px) {
     .profile__info {
         grid-template-columns: 250px 20px;
-        margin: 26px auto 0;
-        gap: 15px 15px;
+        margin: 26px 0 0 0;
+        gap: 15px;
     }
 }
 
 @media screen and (max-width: 320px) {
     .profile__info {
         grid-template-columns: 189px 18px;
-        gap: 14px 10px;
-        max-width: 100%;
+        gap: 14px;
+        width: 100%;
     }
 }

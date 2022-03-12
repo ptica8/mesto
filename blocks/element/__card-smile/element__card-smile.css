@@ -1,6 +1,16 @@
 .element__card-smile {
+    background-image: url(../../../images/like.svg);
+    background-size: cover;
+    background-color: transparent;
+    width: 22px;
+    height: 19px;
     object-fit: cover;
     margin-left: auto;
     align-self: center;
+    border: none;
+}
+
+.element__card-smile:hover {
     cursor: pointer;
+    opacity: 0.6;
 }

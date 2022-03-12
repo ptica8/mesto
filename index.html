@@ -8,14 +8,14 @@
 </head>
 <body class="page">
 	<header class="header">
-		<img src="./images/logo.png" alt="Логотип" class="header__logo">
+		<img src="./images/logo.svg" alt="Логотип" class="header__logo">
 	</header>
 	<main class="content">
 		<section class="profile">
 			<img src="./images/profile-avatar.jpg" alt="Аватар" class="profile__img">
 			<div class="profile__info">
 				<h1 class="profile__name">Жак-Ив Кусто</h1>
-				<img src="images/edit-button.svg" alt="Кнопка Редактировать" class="profile__edit">
+				<button class="profile__edit" type="button" aria-label="Кнопка Редактировать"></button>
 				<p class="profile__subtitle">Исследователь океана</p>
 			</div>
 			<button class="profile__button" type="button" aria-label="Кнопка Добавить"></button>
@@ -27,42 +27,42 @@
 					<img class="element__img" src="./images/temple.jpg" alt="Карачаевск">
 					<div class="element__card">
 						<h2 class="element__card-title">Карачаевск</h2>
-						<img src="images/like.svg" class="element__card-smile" alt="Кнопка Лайк">
+						<button class="element__card-smile element__card-smile_active" type="button" aria-label="Кнопка Лайк"></button>
 					</div>
 				</li>
 				<li class="element">
 					<img class="element__img" src="./images/field.png" alt="Гора Эльбрус">
 					<div class="element__card">
 						<h2 class="element__card-title">Гора Эльбрус</h2>
-						<img src="images/like.svg" class="element__card-smile" alt="Кнопка Лайк">
+						<button class="element__card-smile element__card-smile_active" type="button" aria-label="Кнопка Лайк"></button>
 					</div>
 				</li>
 				<li class="element">
 					<img class="element__img" src="./images/mountain.png" alt="Домбай">
 					<div class="element__card">
 						<h2 class="element__card-title">Домбай</h2>
-						<img src="images/like.svg" class="element__card-smile" alt="Кнопка Лайк">
+						<button class="element__card-smile element__card-smile_active" type="button" aria-label="Кнопка Лайк"></button>
 					</div>
 				</li>
 				<li class="element">
 					<img class="element__img" src="./images/field.png" alt="Гора Эльбрус">
 					<div class="element__card">
 						<h2 class="element__card-title">Гора Эльбрус</h2>
-						<img src="images/like.svg" class="element__card-smile" alt="Кнопка Лайк">
+						<button class="element__card-smile element__card-smile_active" type="button" aria-label="Кнопка Лайк"></button>
 					</div>
 				</li>
 				<li class="element">
 					<img class="element__img" src="./images/mountain.png" alt="Домбай">
 					<div class="element__card">
 						<h2 class="element__card-title">Домбай</h2>
-						<img src="images/like.svg" class="element__card-smile" alt="Кнопка Лайк">
+						<button class="element__card-smile element__card-smile_active" type="button" aria-label="Кнопка Лайк"></button>
 					</div>
 				</li>
 				<li class="element">
 					<img class="element__img" src="./images/temple.jpg" alt="Карачаево-Черкесия">
 					<div class="element__card">
 						<h2 class="element__card-title">Карачаевск</h2>
-						<img src="images/like.svg" class="element__card-smile" alt="Кнопка Лайк">
+						<button class="element__card-smile element__card-smile_active" type="button" aria-label="Кнопка Лайк"></button>
 					</div>
 				</li>
 			</ul>
@@ -70,19 +70,23 @@
 
 	</main>
 	<footer class="footer">
-		<p class="footer__copyright">&#169; 2020 Mesto Russia</p>
+		<p class="footer__copyright">&copy; 2020 Mesto Russia</p>
 	</footer>
-	<form class="popup">
+	<section class="popup">
 		<div class="popup__container">
 			<h2 class="popup__title">Редактировать профиль</h2>
-				<div class="input">
-					<input class="input__name input__text" name="name" placeholder="Жак-Ив Кусто" type="text" value>
-					<input class="input__job input__text" name="text" placeholder="Исследователь океана" type="text" value>
-				</div>
-			<button class="popup__save" type="submit">Сохранить</button>
+			<form class="popup__form" name="name-and-job">
+				<label>
+					<input class="popup__text_type_name popup__text" name="name" placeholder="Полное имя" type="text" value>
+				</label>
+				<label>
+					<input class="popup__text_type_job popup__text" name="text" placeholder="Род деятельности" type="text" value>
+				</label>
+				<button class="popup__save" type="submit">Сохранить</button>
+			</form>
 			<button class="popup__close" type="button" aria-label="Закрыть форму"></button>
 		</div>
-	</form>
+	</section>
 <script src="scripts/index.js"></script>
 </body>
 </html>
