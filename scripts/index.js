@@ -9,7 +9,10 @@ let jobOutput = document.querySelector('.profile__subtitle');
 
 function startPopup() {
     popup.classList.add('popup_opened');
+    nameInput.value = nameOutput.textContent;
+    jobInput.value = jobOutput.textContent;
 }
+
 function endPopup() {
     popup.classList.remove('popup_opened');
 }
