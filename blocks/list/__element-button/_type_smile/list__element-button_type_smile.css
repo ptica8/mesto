@@ -1,5 +1,5 @@
-.element__card-smile {
-    background-image: url(../../../images/like.svg);
+.list__element-button_type_smile {
+    background-image: url(../../../../images/like.svg);
     background-size: cover;
     background-color: transparent;
     width: 22px;
@@ -10,7 +10,7 @@
     border: none;
 }
 
-.element__card-smile:hover {
+.list__element-button_type_smile:hover {
     cursor: pointer;
     opacity: 0.5;
 }
