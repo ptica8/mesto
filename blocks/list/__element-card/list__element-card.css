@@ -1,4 +1,4 @@
-.element__card {
+.list__element-card {
     display: flex;
     flex-direction: row;
     padding: 25px 15px 25px 21px;
