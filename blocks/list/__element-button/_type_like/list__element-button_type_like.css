@@ -1,12 +1,11 @@
 .list__element-button_type_like {
     background-image: url(../../../../images/like.svg);
-    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;
     width: 22px;
     height: 19px;
-    margin-left: auto;
+    margin: 0 0 0 auto;
     align-self: center;
     border: none;
 }
@@ -15,3 +14,4 @@
     cursor: pointer;
     opacity: 0.5;
 }
+

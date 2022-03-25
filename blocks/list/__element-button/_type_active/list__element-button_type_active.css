@@ -1,12 +1,11 @@
 .list__element-button_type_active {
     background-image: url(../../../../images/like-active.svg);
-    background-size: cover;
     background-color: transparent;
     background-position: center;
     background-repeat: no-repeat;
     width: 22px;
     height: 19px;
-    margin-left: auto;
+    margin: 0 0 0 auto;
     align-self: center;
     border: none;
 }

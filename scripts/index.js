@@ -27,19 +27,18 @@
 
 const list = document.querySelector('.list');
 const listTemplate = document.querySelector('.list-template').content.querySelector('.list__element');
-const popupProfile = document.querySelector('.popup__type_profile');
-const popupCard = document.querySelector('.popup__type_card');
-const popupImage = document.querySelector('.popup__type_image');
+const popupProfile = document.querySelector('.popup__type-profile');
+const popupCard = document.querySelector('.popup__type-card');
+const popupImage = document.querySelector('.popup__type-image');
 const openProfileButton = document.querySelector('.profile__edit');
 const openCardButton = document.querySelector('.profile__button');
 const closeProfileButton = popupProfile.querySelector('.popup__close');
 const closeCardButton = popupCard.querySelector('.popup__close');
 const closeImageButton = popupImage.querySelector('.popup__close');
-const imageClick = document.querySelector('.popup__img');
-const titleClick = document.querySelector('.popup__subtitle');
-let profilePopupFormElement = document.querySelector('.popup__type_profile');
-let profileNameInput = profilePopupFormElement.querySelector('.popup__text_type_name');
-let profileJobInput = profilePopupFormElement.querySelector('.popup__text_type_job');
+const imageClick = popupImage.querySelector('.popup__img');
+const titleClick = popupImage.querySelector('.popup__subtitle');
+let profileNameInput = popupProfile.querySelector('.popup__text_type_name');
+let profileJobInput = popupProfile.querySelector('.popup__text_type_job');
 let profileNameOutput = document.querySelector('.profile__name');
 let profileJobOutput = document.querySelector('.profile__subtitle');
 
@@ -95,7 +94,7 @@ function profileFormSubmitHandler(evt) {
     evt.preventDefault();
     profileNameOutput.textContent = profileNameInput.value;
     profileJobOutput.textContent = profileJobInput.value;
-    closePopup(profilePopupFormElement);
+    closePopup(popupProfile);
     profileNameInput.value = '';
     profileJobInput.value = '';
 }
@@ -107,6 +106,6 @@ openCardButton.addEventListener('click',() => openPopup(popupCard));
 closeProfileButton.addEventListener('click',() => closePopup(popupProfile));
 closeCardButton.addEventListener('click',() => closePopup(popupCard));
 closeImageButton.addEventListener('click',() => closePopup(popupImage));
-profilePopupFormElement.addEventListener('submit', profileFormSubmitHandler);
+popupProfile.addEventListener('submit', profileFormSubmitHandler);
 popupCard.addEventListener('submit', addCardFormSubmitHandler);
 
