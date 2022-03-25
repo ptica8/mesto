@@ -1,5 +1,6 @@
 .list__element-title {
     color: #000000;
+    max-width: 222px;
     font-style: normal;
     font-weight: 900;
     font-size: 24px;

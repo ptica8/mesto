@@ -87,6 +87,8 @@ function addCardFormSubmitHandler(evt) {
     };
     createCard(newCardAtList, 'prepend');
     closePopup(popupCard);
+    addCardCityInput.value = '';
+    addCardImgInput.value = '';
 }
 
 function profileFormSubmitHandler(evt) {
@@ -94,6 +96,8 @@ function profileFormSubmitHandler(evt) {
     profileNameOutput.textContent = profileNameInput.value;
     profileJobOutput.textContent = profileJobInput.value;
     closePopup(profilePopupFormElement);
+    profileNameInput.value = '';
+    profileJobInput.value = '';
 }
 
 initialCards.map(newCardAtList => createCard(newCardAtList));
