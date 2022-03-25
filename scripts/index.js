@@ -27,9 +27,9 @@
 
 const list = document.querySelector('.list');
 const listTemplate = document.querySelector('.list-template').content.querySelector('.list__element');
-const popupProfile = document.querySelector('.popup__type-profile');
-const popupCard = document.querySelector('.popup__type-card');
-const popupImage = document.querySelector('.popup__type-image');
+const popupProfile = document.querySelector('.popup_type_profile');
+const popupCard = document.querySelector('.popup_type_card');
+const popupImage = document.querySelector('.popup_type_image');
 const openProfileButton = document.querySelector('.profile__edit');
 const openCardButton = document.querySelector('.profile__button');
 const closeProfileButton = popupProfile.querySelector('.popup__close');
