@@ -49,13 +49,6 @@ function handlerEsc(evt) {
     }
 }
 
-function handlerClick (evt) {
-    const activePopup = document.querySelector('.popup_opened');
-    if (evt.target.classList.contains('popup__close')) {
-      closePopup(activePopup)
-    }
-}
-
 function handlerOutsideClick (evt) {
     const activePopup = document.querySelector('.popup_opened');
     if (evt.target === evt.currentTarget) {
@@ -65,9 +58,7 @@ function handlerOutsideClick (evt) {
 
 function openPopup(popupType) {
     popupType.classList.add('popup_opened');
-    //document.addEventListener('keydown', handlerEsc);
-  //  document.addEventListener('click', handlerClick);
-   // popupType.addEventListener('click', handlerOutsideClick);
+    document.addEventListener('keydown', handlerEsc);
 }
 
 function openProfilePopup() {
@@ -78,6 +69,7 @@ function openProfilePopup() {
 
 function closePopup(popupType) {
     popupType.classList.remove('popup_opened');
+    document.removeEventListener('keydown', handlerEsc);
 }
 
 function imageClickHandler(event) {
@@ -134,5 +126,13 @@ initialCards.map(newCardAtList => appendCard(createCard(newCardAtList)));
 
 openProfileButton.addEventListener('click',() => openProfilePopup());
 openCardButton.addEventListener('click',() => openPopup(popupCard));
+popups.forEach(popup => {
+    popup.addEventListener('click', evt => {
+        if (evt.target.classList.contains('popup__close')) {
+            closePopup(popup)
+        }
+        handlerOutsideClick(popup);
+    });
+});
 popupProfile.addEventListener('submit', handleProfileFormSubmit);
 popupCard.addEventListener('submit', addCardFormSubmitHandler);
