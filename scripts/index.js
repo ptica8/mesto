@@ -65,9 +65,9 @@ function handlerOutsideClick (evt) {
 
 function openPopup(popupType) {
     popupType.classList.add('popup_opened');
-    document.addEventListener('keydown', handlerEsc);
-    document.addEventListener('click', handlerClick);
-    popupType.addEventListener('click', handlerOutsideClick);
+    //document.addEventListener('keydown', handlerEsc);
+  //  document.addEventListener('click', handlerClick);
+   // popupType.addEventListener('click', handlerOutsideClick);
 }
 
 function openProfilePopup() {
