@@ -62,9 +62,9 @@ function openPopup(popupType) {
 }
 
 function openProfilePopup() {
-    openPopup(popupProfile)
-    profileNameInput.value = profileNameOutput.textContent
-    profileJobInput.value = profileJobOutput.textContent
+    openPopup(popupProfile);
+    profileNameInput.value = profileNameOutput.textContent;
+    profileJobInput.value = profileJobOutput.textContent;
 }
 
 function closePopup(popupType) {
@@ -131,8 +131,9 @@ popups.forEach(popup => {
         if (evt.target.classList.contains('popup__close')) {
             closePopup(popup)
         }
-        handlerOutsideClick(popup);
+        handlerOutsideClick(evt);
     });
 });
 popupProfile.addEventListener('submit', handleProfileFormSubmit);
 popupCard.addEventListener('submit', addCardFormSubmitHandler);
+console.log(popupCard);
