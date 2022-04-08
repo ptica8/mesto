@@ -31,12 +31,12 @@
 	<section class="popup popup_type_profile">
 		<div class="popup__container">
 			<h2 class="popup__title">Редактировать профиль</h2>
-			<form class="popup__form" name="name-and-job">
+			<form class="popup__form" name="name-and-job" novalidate>
 				<label>
-					<input class="popup__text popup__text_type_name" name="name" placeholder="Полное имя" type="text" value>
+					<input class="popup__input popup__input_type_name" name="name" minlength="2" maxlength="40" required placeholder="Полное имя" type="text" value>
 				</label>
 				<label>
-					<input class="popup__text popup__text_type_job" name="text" placeholder="Род деятельности" type="text" value>
+					<input class="popup__input popup__input_type_job" name="text" minlength="2" maxlength="200" required placeholder="Род деятельности" type="text" value>
 				</label>
 				<button class="popup__save" type="submit">Сохранить</button>
 			</form>
@@ -47,12 +47,12 @@
 	<section class="popup popup_type_card">
 		<div class="popup__container">
 			<h2 class="popup__title">Новое место</h2>
-			<form class="popup__form" name="city-and-img">
+			<form class="popup__form" name="city-and-img" novalidate>
 				<label>
-					<input class="popup__text popup__text_type_city" name="name" placeholder="Название" type="text" value>
+					<input class="popup__input popup__input_type_city" name="name" minlength="2" maxlength="30" required placeholder="Название" type="text" value>
 				</label>
 				<label>
-					<input class="popup__text popup__text_type_img" name="text" placeholder="Ссылка на картинку" type="text" value>
+					<input class="popup__input popup__input_type_img" name="link" minlength="2" required placeholder="Ссылка на картинку" type="url" value>
 				</label>
 				<button class="popup__save" type="submit">Создать</button>
 			</form>

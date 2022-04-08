@@ -35,12 +35,12 @@ const openProfileButton = document.querySelector('.profile__edit');
 const openCardButton = document.querySelector('.profile__button');
 const popupImagePicture = popupImage.querySelector('.popup__img');
 const popupImageSubtitle = popupImage.querySelector('.popup__subtitle');
-const profileNameInput = popupProfile.querySelector('.popup__text_type_name');
-const profileJobInput = popupProfile.querySelector('.popup__text_type_job');
+const profileNameInput = popupProfile.querySelector('.popup__input_type_name');
+const profileJobInput = popupProfile.querySelector('.popup__input_type_job');
 const profileNameOutput = document.querySelector('.profile__name');
 const profileJobOutput = document.querySelector('.profile__subtitle');
-const addCardCityInput = popupCard.querySelector('.popup__text_type_city');
-const addCardImgInput = popupCard.querySelector('.popup__text_type_img');
+const addCardCityInput = popupCard.querySelector('.popup__input_type_city');
+const addCardImgInput = popupCard.querySelector('.popup__input_type_img');
 
 function handlerEsc(evt) {
     const activePopup = document.querySelector('.popup_opened');
