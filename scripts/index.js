@@ -59,6 +59,9 @@ function handlerOutsideClick (evt) {
 function openPopup(popupType) {
     popupType.classList.add('popup_opened');
     document.addEventListener('keydown', handlerEsc);
+    const buttonElement = popupType.querySelector('.popup__button');
+    buttonElement.classList.add('popup__button_disabled');
+    buttonElement.setAttribute('disabled', 'disabled');
 }
 
 function openProfilePopup() {
@@ -70,6 +73,8 @@ function openProfilePopup() {
 function closePopup(popupType) {
     popupType.classList.remove('popup_opened');
     document.removeEventListener('keydown', handlerEsc);
+    addCardCityInput.value = '';
+    addCardImgInput.value = '';
 }
 
 function imageClickHandler(event) {
@@ -111,7 +116,6 @@ function addCardFormSubmitHandler(evt) {
         link: addCardImgInput.value
     }));
     closePopup(popupCard);
-    evt.currentTarget.reset();
 }
 
 function handleProfileFormSubmit(evt) {
@@ -119,7 +123,6 @@ function handleProfileFormSubmit(evt) {
     profileNameOutput.textContent = profileNameInput.value;
     profileJobOutput.textContent = profileJobInput.value;
     closePopup(popupProfile);
-    evt.currentTarget.reset();
 }
 
 initialCards.map(newCardAtList => appendCard(createCard(newCardAtList)));
@@ -136,4 +139,3 @@ popups.forEach(popup => {
 });
 popupProfile.addEventListener('submit', handleProfileFormSubmit);
 popupCard.addEventListener('submit', addCardFormSubmitHandler);
-console.log(popupCard);
