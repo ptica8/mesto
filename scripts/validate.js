@@ -1,16 +1,16 @@
-const showInputError = (fieldset, inputElement, {inputErrorClass, errorClass, ...rest}, errorMessage) => {
+const showInputError = (fieldset, inputElement, {inputErrorClass, errorClass, errorBorder, ...rest}, errorMessage) => {
     const errorElement = fieldset.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(errorClass);
-    inputElement.classList.add('popup__border-error');
+    inputElement.classList.add(errorBorder);
 };
 
-const hideInputError = (fieldset, inputElement, {inputErrorClass, errorClass, ...rest}) => {
+const hideInputError = (fieldset, inputElement, {inputErrorClass, errorClass, errorBorder, ...rest}) => {
     const errorElement = fieldset.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(inputErrorClass);
     errorElement.classList.remove(errorClass);
-    inputElement.classList.remove('popup__border-error');
+    inputElement.classList.remove(errorBorder);
     errorElement.textContent = '';
 };
 
@@ -69,6 +69,7 @@ enableValidation({
     submitButtonSelector: '.popup__button',
     inactiveButtonClass: 'popup__button_disabled',
     inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_visible'
+    errorClass: 'popup__input-error_visible',
+    errorBorder: 'popup__border-error'
 });
 
