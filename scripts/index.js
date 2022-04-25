@@ -1,4 +1,6 @@
- const initialCards = [
+import Card from './card.js';
+
+const initialCards = [
     {
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
@@ -71,11 +73,17 @@ function closePopup(popupType) {
     document.removeEventListener('keydown', handleEsc);
 }
 
-function handleImageClick(event) {
-    popupImagePicture.src = event.link;
-    popupImagePicture.alt = event.name;
-    popupImageSubtitle.textContent = event.name;
-}
+//function handleImageClick(event) {
+  //  popupImagePicture.src = event.link;
+ //   popupImagePicture.alt = event.name;
+ //   popupImageSubtitle.textContent = event.name;
+//}
+
+ function handleImageClick2(name, link) {
+     popupImagePicture.src = link;
+     popupImagePicture.alt = name;
+     popupImageSubtitle.textContent = name;
+ }
 
 function createCard(item) {
     const listElement = listTemplate.cloneNode(true);
@@ -124,7 +132,11 @@ function handleProfileFormSubmit(evt) {
     closePopup(popupProfile);
 }
 
-initialCards.map(newCardAtList => appendCard(createCard(newCardAtList)));
+initialCards.map(data => {
+    const card = new Card(data, '.list-template', openPopup, handleImageClick2);
+    const cardElement = card.generateCard();
+    document.body.append(cardElement)
+})
 
 openProfileButton.addEventListener('click',() => openProfilePopup());
 openCardButton.addEventListener('click',() => openPopup(popupCard));
