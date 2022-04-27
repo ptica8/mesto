@@ -1,10 +1,11 @@
 export default class Card {
-    constructor(data, templateSelector, openPopup, handleImageClick) {
+    constructor(data, templateSelector, openPopup, handleImageClick, popupImage) {
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
         this._openPopup = openPopup;
         this._handleImageClick = handleImageClick;
+        this._popupImage = popupImage;
     }
 
     _getTemplate() {
@@ -22,7 +23,7 @@ export default class Card {
         return deleteButton;
     }
 
-    _setEventListeners(listElementImg, likeButton, deleteButton) {
+    _setEventListeners(listElementImg, likeButton, deleteButton, popupImage) {
         listElementImg.addEventListener('click', () => {
             this._openPopup(popupImage)
             this._handleImageClick(this._name, this._link)
@@ -40,7 +41,7 @@ export default class Card {
         listElementTitle.textContent = this._name;
         const likeButton = this._addLikeButton(this._element);
         const deleteButton = this._addDeleteButton(this._element);
-        this._setEventListeners(listElementImg, likeButton, deleteButton);
+        this._setEventListeners(listElementImg, likeButton, deleteButton, this._popupImage);
         return this._element;
     }
 }

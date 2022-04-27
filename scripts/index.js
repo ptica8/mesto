@@ -1,4 +1,5 @@
 import Card from './card.js';
+import {FormValidator, formsAndInputsData} from './formValidator.js';
 
 const initialCards = [
     {
@@ -73,19 +74,13 @@ function closePopup(popupType) {
     document.removeEventListener('keydown', handleEsc);
 }
 
-//function handleImageClick(event) {
-  //  popupImagePicture.src = event.link;
- //   popupImagePicture.alt = event.name;
- //   popupImageSubtitle.textContent = event.name;
-//}
-
- function handleImageClick2(name, link) {
+ function handleImageClick(name, link) {
      popupImagePicture.src = link;
      popupImagePicture.alt = name;
      popupImageSubtitle.textContent = name;
  }
 
-function createCard(item) {
+/*function createCard(item) {
     const listElement = listTemplate.cloneNode(true);
     const listElementImg = listElement.querySelector('.list__element-img');
     listElementImg.src = item.link;
@@ -101,11 +96,11 @@ function createCard(item) {
     const deleteButton = listElement.querySelector('.list__element-button_type_delete');
     deleteButton.addEventListener('click', () => listElement.remove());
     return listElement;
-}
+}*/
 
-function appendCard(listElement) {
-    list.append(listElement);
-}
+//function appendCard(listElement) {
+   // list.append(listElement);
+//}
 
 function prependCard(listElement) {
     list.prepend(listElement);
@@ -113,10 +108,13 @@ function prependCard(listElement) {
 
 function handleAddCardFormSubmit(evt) {
     evt.preventDefault();
-    prependCard(createCard({
-        name: addCardCityInput.value,
-        link: addCardImgInput.value
-    }));
+    const card = new Card({name: addCardCityInput.value, link: addCardImgInput.value}, '.list-template', openPopup, handleImageClick, popupImage);
+    const cardElement = card.generateCard();
+    prependCard(cardElement);
+    //prependCard(createCard({
+      //  name: addCardCityInput.value,
+      //  link: addCardImgInput.value
+    //}));
     closePopup(popupCard);
     addCardCityInput.value = '';
     addCardImgInput.value = '';
@@ -133,10 +131,13 @@ function handleProfileFormSubmit(evt) {
 }
 
 initialCards.map(data => {
-    const card = new Card(data, '.list-template', openPopup, handleImageClick2);
+    const card = new Card(data, '.list-template', openPopup, handleImageClick, popupImage);
     const cardElement = card.generateCard();
-    document.body.append(cardElement)
+    document.querySelector('.list').append(cardElement);
 })
+
+const formValidator = new FormValidator(formsAndInputsData, document);
+formValidator.enableValidation();
 
 openProfileButton.addEventListener('click',() => openProfilePopup());
 openCardButton.addEventListener('click',() => openPopup(popupCard));
