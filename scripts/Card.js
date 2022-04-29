@@ -23,13 +23,15 @@ export default class Card {
         return deleteButton;
     }
 
-    _setEventListeners(listElementImg, likeButton, deleteButton, popupImage) {
+    _setEventListeners(listElementImg, popupImage) {
         listElementImg.addEventListener('click', () => {
             this._openPopup(popupImage)
             this._handleImageClick(this._name, this._link)
         });
-        likeButton.addEventListener('click', evt => evt.target.classList.toggle('list__element-button_type_active'));
-        deleteButton.addEventListener('click', () =>  this._element.remove());
+        this._likeButton = this._addLikeButton(this._element);
+        this._deleteButton = this._addDeleteButton(this._element);
+        this._likeButton.addEventListener('click', evt => evt.target.classList.toggle('list__element-button_type_active'));
+        this._deleteButton.addEventListener('click', () =>  this._element.remove());
     }
 
     generateCard() {
@@ -39,9 +41,7 @@ export default class Card {
         listElementImg.alt = this._name;
         const listElementTitle = this._element.querySelector('.list__element-title');
         listElementTitle.textContent = this._name;
-        const likeButton = this._addLikeButton(this._element);
-        const deleteButton = this._addDeleteButton(this._element);
-        this._setEventListeners(listElementImg, likeButton, deleteButton, this._popupImage);
+        this._setEventListeners(listElementImg, this._popupImage);
         return this._element;
     }
 }

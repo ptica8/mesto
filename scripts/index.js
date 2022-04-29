@@ -1,5 +1,5 @@
-import Card from './card.js';
-import {FormValidator, formsAndInputsData} from './formValidator.js';
+import Card from './Card.js';
+import {FormValidator, formsAndInputsData} from './FormValidator.js';
 
 const initialCards = [
     {
@@ -44,6 +44,8 @@ const profileNameOutput = document.querySelector('.profile__name');
 const profileJobOutput = document.querySelector('.profile__subtitle');
 const addCardCityInput = popupCard.querySelector('.popup__input_type_city');
 const addCardImgInput = popupCard.querySelector('.popup__input_type_img');
+const popupProfileForm = popupProfile.querySelector('.popup__form_profile');
+const popupCardForm = popupCard.querySelector('.popup__form_card');
 
 function handleEsc(evt) {
     if (evt.key === "Escape") {
@@ -80,47 +82,23 @@ function closePopup(popupType) {
      popupImageSubtitle.textContent = name;
  }
 
-/*function createCard(item) {
-    const listElement = listTemplate.cloneNode(true);
-    const listElementImg = listElement.querySelector('.list__element-img');
-    listElementImg.src = item.link;
-    listElementImg.alt = item.name;
-    const listElementTitle = listElement.querySelector('.list__element-title');
-    listElementTitle.textContent = item.name;
-    listElementImg.addEventListener('click', () => {
-        openPopup(popupImage)
-        handleImageClick(item)
-    });
-    const likeButton = listElement.querySelector('.list__element-button_type_like');
-    likeButton.addEventListener('click', evt => evt.target.classList.toggle('list__element-button_type_active'));
-    const deleteButton = listElement.querySelector('.list__element-button_type_delete');
-    deleteButton.addEventListener('click', () => listElement.remove());
-    return listElement;
-}*/
-
-//function appendCard(listElement) {
-   // list.append(listElement);
-//}
-
 function prependCard(listElement) {
     list.prepend(listElement);
 }
 
+function createCard(data, templateSelector, openPopupFunction, handleImageClickFunction, popupImage) {
+    const card = new Card(data, templateSelector, openPopupFunction, handleImageClickFunction, popupImage);
+    const cardElement = card.generateCard();
+    return cardElement;
+}
+
 function handleAddCardFormSubmit(evt) {
     evt.preventDefault();
-    const card = new Card({name: addCardCityInput.value, link: addCardImgInput.value}, '.list-template', openPopup, handleImageClick, popupImage);
-    const cardElement = card.generateCard();
+    const cardElement = createCard({name: addCardCityInput.value, link: addCardImgInput.value}, '.list-template', openPopup, handleImageClick, popupImage);
     prependCard(cardElement);
-    //prependCard(createCard({
-      //  name: addCardCityInput.value,
-      //  link: addCardImgInput.value
-    //}));
     closePopup(popupCard);
     addCardCityInput.value = '';
     addCardImgInput.value = '';
-    const buttonElement = popupCard.querySelector('.popup__button');
-    buttonElement.classList.add('popup__button_disabled');
-    buttonElement.setAttribute('disabled', 'disabled');
 }
 
 function handleProfileFormSubmit(evt) {
@@ -131,16 +109,23 @@ function handleProfileFormSubmit(evt) {
 }
 
 initialCards.map(data => {
-    const card = new Card(data, '.list-template', openPopup, handleImageClick, popupImage);
-    const cardElement = card.generateCard();
-    document.querySelector('.list').append(cardElement);
+    const cardElement = createCard(data, '.list-template', openPopup, handleImageClick, popupImage);
+    list.append(cardElement);
 })
 
-const formValidator = new FormValidator(formsAndInputsData, document);
-formValidator.enableValidation();
+const formValidatorProfile = new FormValidator(formsAndInputsData, popupProfileForm);
+const formValidatorCard = new FormValidator(formsAndInputsData, popupCardForm);
+formValidatorProfile.enableValidation();
+formValidatorCard.enableValidation();
 
-openProfileButton.addEventListener('click',() => openProfilePopup());
-openCardButton.addEventListener('click',() => openPopup(popupCard));
+openProfileButton.addEventListener('click',() => {
+    openProfilePopup()
+    formValidatorProfile.resetValidation()
+});
+openCardButton.addEventListener('click',() => {
+    openPopup(popupCard)
+    formValidatorCard.resetValidation()
+});
 popups.forEach(popup => {
     popup.addEventListener('mousedown', evt => {
         if (evt.target.classList.contains('popup__close')) {
