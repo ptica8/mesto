@@ -1,12 +1,13 @@
-import * as constants from '../scripts/constants.js';
-import Card from '../scripts/Card.js';
-import PopupWithImage from '../scripts/PopupWithImage.js';
-import Section from '../scripts/Section.js';
-import PopupWithForm from '../scripts/PopupWithForm.js';
-import UserInfo from '../scripts/UserInfo.js';
-import FormValidator from '../scripts/FormValidator.js';
+import './pages/index.css';
+import * as constants from './scripts/constants.js';
+import Card from './scripts/Card.js';
+import PopupWithImage from './scripts/PopupWithImage.js';
+import Section from './scripts/Section.js';
+import PopupWithForm from './scripts/PopupWithForm.js';
+import UserInfo from './scripts/UserInfo.js';
+import FormValidator from './scripts/FormValidator.js';
 
- function handleCardClick(name, link, popup) {
+function handleCardClick(name, link, popup) {
      popup.openPopup(name, link);
  }
 
