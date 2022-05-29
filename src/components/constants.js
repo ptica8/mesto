@@ -9,6 +9,7 @@ export const formsAndInputsData = {
 };
 
 export const popupProfile = document.querySelector('.popup_type_profile');
+export const popupAvatar = document.querySelector('.popup_type_avatar');
 export const popupProfileSelector = '.popup_type_profile';
 export const popupCardSelector = '.popup_type_card';
 export const popupImageSelector = '.popup_type_image';
@@ -26,6 +27,7 @@ export const popupSubmitButtonAvatar = document.querySelector('.popup__button_av
 export const popupSubmitButtonProfile = document.querySelector('.popup__button_profile');
 export const popupProfileForm = popupProfile.querySelector('.popup__form_profile');
 export const popupCardForm = popupCard.querySelector('.popup__form_card');
+export const popupAvatarForm = popupAvatar.querySelector('.popup__form_avatar');
 export const userInfoData = {name: profileNameSelector, about: profileJobSelector};
 export const profileNameInput = document.querySelector('.popup__input_type_name');
 export const profileJobInput = document.querySelector('.popup__input_type_job');

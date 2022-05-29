@@ -1,3 +1,5 @@
+import * as constants from "./constants";
+
 export default class UserInfo {
     constructor(data) {
         this._name = data.name;
@@ -13,8 +15,10 @@ export default class UserInfo {
         return this._profileValues;
     }
 
-    setUserInfo(data) {
+    setUserInfo(data, avatarImage) {
         this._nameElement.textContent = data.name;
         this._jobElement.textContent = data.about;
+        this._id = data._id;
+        avatarImage.src = data.avatar;
     }
 }

@@ -19,7 +19,6 @@ export default class Card {
 
     _handleLikeButton() {
         this._handleLikeCallback(this._cardId, this._listElementLike, this._likeButton);
-        this._likeButton.classList.toggle('list__element-button_type_active');
     }
 
     _setEventListeners() {

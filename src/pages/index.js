@@ -31,12 +31,12 @@ function handleAddCardFormSubmit(data) {
     constants.popupSubmitButtonCard.textContent = 'Сохранение...';
     api.addNewCard(data)
         .then((newData) => {
-            const cardElement = createCard(newData, userIdObj);
+            const cardElement = createCard(newData, userInfo);
             cardsList.addItem(cardElement);
             popupAddCard.close();
-            constants.popupSubmitButtonCard.textContent = 'Создать';
         })
         .catch((err) => console.log(err))
+        .finally(() => {constants.popupSubmitButtonCard.textContent = 'Создать'});
 }
 
 function handleCardClick(name, link) {
@@ -48,12 +48,14 @@ function handleCardLike(id, listElementLike, likeButton) {
         api.deleteLike(id)
             .then((data) => {
                 listElementLike.textContent = data.likes.length;
+                likeButton.classList.toggle('list__element-button_type_active');
             })
             .catch((err) => console.log(err))
     } else {
         api.putLikeOnCard(id)
             .then((data) => {
                 listElementLike.textContent = data.likes.length;
+                likeButton.classList.toggle('list__element-button_type_active');
             })
             .catch((err) => console.log(err))
     }
@@ -63,11 +65,11 @@ function handleProfileFormSubmit(data) {
     constants.popupSubmitButtonProfile.textContent = 'Сохранение...';
     api.editProfileInfo(data)
         .then((newData) => {
-            userInfo.setUserInfo(newData)
+            userInfo.setUserInfo(newData, constants.avatarImage)
             popupAddProfile.close();
-            constants.popupSubmitButtonProfile.textContent = 'Сохранить';
         })
         .catch((err) => console.log(err))
+        .finally(() => {constants.popupSubmitButtonProfile.textContent = 'Сохранить'});
 }
 
 function handleEditAvatarFormSubmit(data) {
@@ -76,9 +78,9 @@ function handleEditAvatarFormSubmit(data) {
         .then((newData) => {
             constants.avatarImage.src = newData.avatar;
             popupEditAvatar.close();
-            constants.popupSubmitButtonAvatar.textContent = 'Сохранить';
         })
         .catch((err) => console.log(err))
+        .finally(() => {constants.popupSubmitButtonAvatar.textContent = 'Сохранить'});
 }
 
 const api = new Api({
@@ -89,33 +91,22 @@ const api = new Api({
   }
 })
 
-const userIdObj = {}
-api.getUserInfo()
-    .then((data) => {
-        userIdObj._id = data._id;
-        constants.avatarImage.src = data.avatar;
-    })
-    .catch((err) => console.log(err));
+const userInfo = new UserInfo(constants.userInfoData);
 
 const cardsList = new Section(
     (cardItem) => {
-        const cardElement = createCard(cardItem, userIdObj);
+        const cardElement = createCard(cardItem, userInfo);
         cardsList.addItem(cardElement);
         }, '.list')
 
-api.getAllCards()
-    .then((data) => {
-        cardsList.renderItems(data);
+Promise.all([api.getUserInfo(), api.getAllCards()])
+    .then(([userData, cards]) => {
+        cardsList.renderItems(cards);
+        userInfo.setUserInfo(userData, constants.avatarImage)
     })
-    .catch((err) => console.log(err));
-
-const userInfo = new UserInfo(constants.userInfoData);
-
-api.getUserInfo()
-    .then((data) => {
-        userInfo.setUserInfo(data)
-    })
-    .catch((err) => console.log(err));
+    .catch(err => {
+        console.log(err)
+    });
 
 const popupConfirmDelete = new PopupWithSubmit(constants.popupDeleteSelector, handleDeleteCard);
 popupConfirmDelete.setEventListeners();
@@ -136,6 +127,8 @@ const formValidatorProfile = new FormValidator(constants.formsAndInputsData, con
 formValidatorProfile.enableValidation();
 const formValidatorCard = new FormValidator(constants.formsAndInputsData, constants.popupCardForm);
 formValidatorCard.enableValidation();
+const formValidatorAvatar = new FormValidator(constants.formsAndInputsData, constants.popupAvatarForm);
+formValidatorAvatar.enableValidation();
 
 constants.openProfileButton.addEventListener('click',() => {
     formValidatorProfile.resetValidation();
@@ -149,6 +142,7 @@ constants.openCardButton.addEventListener('click',() => {
     popupAddCard.open();
 });
 constants.avatarProfile.addEventListener('click',() => {
+    formValidatorAvatar.resetValidation();
     popupEditAvatar.open();
 });
 

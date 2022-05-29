@@ -4,18 +4,19 @@
         this._headers = config.headers;
     }
 
+     _checkResponse(res) {
+         if (res.ok) {
+             return res.json();
+         }
+         return Promise.reject(`Ошибка ${res.status}`);
+     }
+
      getUserInfo() {
          return fetch(`${this._url}/users/me`, {
              method: 'GET',
              headers: this._headers
          })
-         .then((res) => {
-             if (res.ok) {
-                 return res.json(); // return = данные пробросились дальше
-             } // как только сервер обработал - идет then
-
-             return Promise.reject(`Ошибка: ${res.status}`)
-         });
+         .then(this._checkResponse)
     }
 
      getAllCards() {
@@ -23,13 +24,7 @@
              method: 'GET',
              headers: this._headers
           })
-          .then((res) => {
-            if (res.ok) {
-                return res.json(); // return = данные пробросились дальше
-            } // как только сервер обработал - идет then
-
-            return Promise.reject(`Ошибка: ${res.status}`) // то что в catch будет
-          });
+          .then(this._checkResponse)
      }
 
     editProfileInfo(data) {
@@ -38,13 +33,7 @@
              headers: this._headers,
              body: JSON.stringify(data) // в строку превратили
         })
-        .then((res) => {
-             if (res.ok) {
-                 return res.json();
-             }
-
-             return Promise.reject(`Ошибка: ${res.status}`) // то что в catch будет
-         });
+        .then(this._checkResponse)
     }
 
    addNewCard(data) {
@@ -53,13 +42,7 @@
             headers: this._headers,
             body: JSON.stringify(data) // в строку превратили
         })
-        .then((res) => {//
-            if (res.ok) {
-                return res.json();
-            }
-
-            return Promise.reject(`Ошибка: ${res.status}`) // всю логику then можно вынести в отдельный метод тк повторяется и в гет и в пост
-        });
+        .then(this._checkResponse)
    }
 
     deleteCard(id) {
@@ -67,28 +50,16 @@
             method: 'DELETE',
             headers: this._headers,
         })
-        .then((res) => {//
-            if (res.ok) {
-                return res.json();
-            }
-
-            return Promise.reject(`Ошибка: ${res.status}`) // всю логику then можно вынести в отдельный метод тк повторяется и в гет и в пост
-        });
+        .then(this._checkResponse)
     }
 
-     editAvatar(data) { console.log(data)
+     editAvatar(data) {
          return fetch(`${this._url}/users/me/avatar`, {
              method: 'PATCH',
              headers: this._headers,
              body: JSON.stringify(data)
          })
-             .then((res) => {//
-                 if (res.ok) {
-                     return res.json();
-                 }
-
-                 return Promise.reject(`Ошибка: ${res.status}`) // всю логику then можно вынести в отдельный метод тк повторяется и в гет и в пост
-             });
+         .then(this._checkResponse)
      }
 
     putLikeOnCard(id) {
@@ -96,13 +67,7 @@
             method: 'PUT',
             headers: this._headers
         })
-        .then((res) => {//
-            if (res.ok) {
-                return res.json();
-            }
-
-            return Promise.reject(`Ошибка: ${res.status}`);
-        });
+        .then(this._checkResponse)
     }
 
     deleteLike(id) {
@@ -110,12 +75,6 @@
             method: 'DELETE',
             headers: this._headers
         })
-        .then((res) => {//
-            if (res.ok) {
-                return res.json();
-            }
-
-            return Promise.reject(`Ошибка: ${res.status}`);
-        });
+        .then(this._checkResponse)
     }
   }

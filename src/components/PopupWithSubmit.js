@@ -13,14 +13,11 @@ export default class PopupWithSubmit extends Popup {
         this._element = element;
     }
 
-
     setEventListeners() {
         super.setEventListeners();
-        console.log('setEventListeners()')
         this._deleteButton.addEventListener('click', (evt) => {
             evt.preventDefault();
             this._handleFormSubmit(this._cardId, this._element);
-            this.close();
         });
     }
 }

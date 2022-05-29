@@ -60,7 +60,7 @@
 						<span class="popup__input-error input-city-error"></span>
 					</label>
 					<label>
-						<input id="input-avatar-img" type="url" class="popup__input popup__input_type_img" name="link" required placeholder="Ссылка на картинку" value>
+						<input id="input-img" type="url" class="popup__input popup__input_type_img" name="link" required placeholder="Ссылка на картинку" value>
 						<span class="popup__input-error input-img-error"></span>
 					</label>
 					<button disabled class="popup__button popup__button_card" type="submit">Создать</button>
@@ -92,9 +92,10 @@
 			<form class="popup__form popup__form_avatar" name="avatar-profile" novalidate>
 				<fieldset class="popup__form-set">
 					<label>
-						<input id="input-img" type="url" class="popup__input popup__input_type_img" name="avatar" required value>
+						<input id="input-img-avatar" type="url" class="popup__input popup__input_type_img" name="avatar" required value>
+						<span class="popup__input-error input-img-avatar-error"></span>
 					</label>
-					<button class="popup__button popup__button_avatar" type="submit">Сохранить</button>
+					<button disabled class="popup__button popup__button_avatar" type="submit">Сохранить</button>
 				</fieldset>
 			</form>
 			<button class="popup__close" type="button" aria-label="Закрыть форму"></button>
