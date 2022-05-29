@@ -23,6 +23,7 @@ function handleDeleteCard(id, element) {
     api.deleteCard(id)
         .then(() => {
             element.remove();
+            popupConfirmDelete.close();
         })
         .catch((err) => console.log(err))
 }
