@@ -102,8 +102,8 @@ const cardsList = new Section(
 
 Promise.all([api.getUserInfo(), api.getAllCards()])
     .then(([userData, cards]) => {
-        cardsList.renderItems(cards);
         userInfo.setUserInfo(userData, constants.avatarImage)
+        cardsList.renderItems(cards);
     })
     .catch(err => {
         console.log(err)
